@@ -46,20 +46,20 @@ Commit Id - 915be175aa9f872eac509a0009a2006b497a1bc5
 ## Application Output Images
 ### Desktop Images
 Desktop Image 1
-![](Images/Desktop1.jpeg)
+![](Images/Desktop1.jpg)
 
 Desktop Image 2
-![](Images/Desktop2.jpeg)
+![](Images/Desktop2.jpg)
 
 Desktop Image 3
-![](Images/Desktop3.jpeg)
+![](Images/Desktop3.jpg)
 
 ### Andriod Images
 Android Image 1
-![](Images/Mobile1.jpeg)
+![](Images/Mobile1.jpg)
 
 Android Image 2
-![](Images/Mobile2.jpeg)
+![](Images/Mobile2.jpg)
 
 Android Image 3
-![](Images/Mobile3.jpeg)
+![](Images/Mobile3.jpg)
