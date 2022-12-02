@@ -19,5 +19,16 @@ public class HistoryDatabase
         await Init();
         return await Database.InsertAsync(new HistoryItem { Expression = exp });
     }
-    
+
+    public async Task<List<HistoryItem>> GetItemsAsync()
+    {
+        await Init();
+        return await Database.Table<HistoryItem>().ToListAsync();
+    }
+
+    public async Task<int> DeleteAllItems()
+    {
+        await Init();
+        return await Database.DeleteAllAsync<HistoryItem>();
+    }
 }
