@@ -1,13 +1,15 @@
+using Calculator.Data;
 using System.Data;
 
 namespace Calculator.Views;
 
 public partial class AdvanceCalc : ContentPage
 {
-
-    public AdvanceCalc()
+    HistoryDatabase database;
+    public AdvanceCalc(HistoryDatabase historyDatabase)
     {
         InitializeComponent();
+        database = historyDatabase;
         OnClear(this, null);
 
     }
@@ -102,7 +104,7 @@ public partial class AdvanceCalc : ContentPage
         currentState = 2;
         mathOperator = "Sqrt";
     }
-    void OnCalculate(object sender, EventArgs e)
+    async void OnCalculate(object sender, EventArgs e)
     {
         if (mathOperator != "Sqrt")
         {
@@ -111,6 +113,7 @@ public partial class AdvanceCalc : ContentPage
             var v = dt.Compute(this.equation, "");
             this.resultText.Text = v.ToString();
             this.CurrentCalculation.Text = this.displayText;
+            await database.SaveItemAsync(this.displayText + " = " + this.resultText.Text);
         }
         if (currentState == 2)
         {
@@ -121,7 +124,10 @@ public partial class AdvanceCalc : ContentPage
 
             this.CurrentCalculation.Text = this.displayText;
 
-            this.resultText.Text = this.equation;
+            this.resultText.Text = result.ToString();
+
+
+            await database.SaveItemAsync(this.displayText + " = " + this.resultText.Text);
 
             firstNumber = result;
             secondNumber = 0;

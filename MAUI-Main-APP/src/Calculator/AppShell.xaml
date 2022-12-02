@@ -16,7 +16,7 @@
         ContentTemplate="{DataTemplate local:AdvanceCalc}"
         Route="AdvanceCalc" />
     <ShellContent
-        Title="History"
+        Title="History Page"
         ContentTemplate="{DataTemplate local:HistoryPage}"
         Route="HistoryPage" />
     <ShellContent

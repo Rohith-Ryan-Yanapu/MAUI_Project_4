@@ -1,8 +1,8 @@
 using Calculator.Models;
 using Calculator.Services;
-namespace Calculator.Views;
 using System.Diagnostics;
 
+namespace Calculator.Views;
 public partial class MathQuiz : ContentPage
 {
     int Score = 0;
