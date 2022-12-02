@@ -1,5 +1,6 @@
 using Calculator.Data;
 using Calculator.Models;
+using System.Collections.ObjectModel;
 
 namespace Calculator.Views;
 

@@ -5,6 +5,9 @@ namespace Calculator.Data;
 public class HistoryDatabase
 {
     SQLiteAsyncConnection Database;
+    public HistoryDatabase()
+    {
+    }
     async Task Init()
     {
         if (Database is not null)

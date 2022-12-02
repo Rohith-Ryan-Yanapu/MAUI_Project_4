@@ -4,7 +4,7 @@
              x:Class="Calculator.Views.HistoryPage"
              Title="HistoryPage">
     <AbsoluteLayout>
-        <CollectionView EmptyView="No items to display">
+        <CollectionView x:Name="historyList" EmptyView="No items to display">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Label Text="{Binding Expression}" />
