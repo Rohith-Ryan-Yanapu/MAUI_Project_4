@@ -1,9 +1,29 @@
+using Calculator.Data;
+using Calculator.Models;
+
 namespace Calculator.Views;
 
 public partial class HistoryPage : ContentPage
 {
-	public HistoryPage()
-	{
-		InitializeComponent();
-	}
+    HistoryDatabase database;
+    public ObservableCollection<HistoryItem> Items { get; set; } = new();
+    public HistoryPage(HistoryDatabase historyDatabase)
+    {
+        InitializeComponent();
+        database = historyDatabase;
+        BindingContext = this;
+        refreshData();
+    }
+
+    public async void refreshData()
+    {
+        List<HistoryItem> Items = await database.GetItemsAsync();
+        historyList.ItemsSource = Items;
+    }
+
+    async void OnDeleteClicked(object sender, EventArgs e)
+    {
+        await database.DeleteAllItems();
+        refreshData();
+    }
 }
