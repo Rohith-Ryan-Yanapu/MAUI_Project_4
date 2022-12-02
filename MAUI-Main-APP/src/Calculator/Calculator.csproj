@@ -51,6 +51,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\HistoryPage.xaml.cs">
+	    <DependentUpon>HistoryPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="About.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

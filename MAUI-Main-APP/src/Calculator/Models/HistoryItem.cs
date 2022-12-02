@@ -1,4 +1,5 @@
-using SQLite;
+﻿using SQLite;
+
 namespace Calculator.Models;
 
 public class HistoryItem

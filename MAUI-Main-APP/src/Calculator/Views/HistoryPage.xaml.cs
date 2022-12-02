@@ -9,8 +9,8 @@ public partial class HistoryPage : ContentPage
     HistoryDatabase database;
     public ObservableCollection<HistoryItem> Items { get; set; } = new();
     public HistoryPage(HistoryDatabase historyDatabase)
-    {
-        InitializeComponent();
+	{
+		InitializeComponent();
         database = historyDatabase;
         BindingContext = this;
         refreshData();
@@ -19,8 +19,20 @@ public partial class HistoryPage : ContentPage
     public async void refreshData()
     {
         List<HistoryItem> Items = await database.GetItemsAsync();
-        historyList.ItemsSource = Items;
+        historyList.ItemsSource= Items;
     }
+
+    /*protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+        var items = await database.GetItemsAsync();
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Items.Clear();
+            foreach (var item in items)
+                Items.Add(item);
+        });
+    }*/
 
     async void OnDeleteClicked(object sender, EventArgs e)
     {

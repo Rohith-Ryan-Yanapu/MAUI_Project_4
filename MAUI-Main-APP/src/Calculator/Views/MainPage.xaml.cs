@@ -1,15 +1,16 @@
-﻿using System.Data;
+﻿using Calculator.Data;
+using System.Data;
 
 namespace Calculator.Views;
 
 public partial class MainPage : ContentPage
 {
-
-    public MainPage()
+    HistoryDatabase database;
+    public MainPage(HistoryDatabase historyDatabase)
     {
         InitializeComponent();
+        database = historyDatabase;
         OnClear(this, null);
-
     }
 
     string currentEntry = "";
@@ -89,7 +90,7 @@ public partial class MainPage : ContentPage
         this.displayText = "";
     }
 
-    void OnCalculate(object sender, EventArgs e)
+    async void OnCalculate(object sender, EventArgs e)
     {
         if (mathOperator != "Sqrt")
         {
@@ -97,8 +98,10 @@ public partial class MainPage : ContentPage
             System.Diagnostics.Debug.WriteLine(this.equation);
             var v = dt.Compute(this.equation, "");
             this.resultText.Text = v.ToString();
+            this.CurrentCalculation.Text = this.displayText;
+            await database.SaveItemAsync(this.displayText+" = "+ this.resultText.Text);
         }
-        if (currentState == 2)
+        else if (currentState == 2)
         {
             if (secondNumber == 0)
                 LockNumberValue(resultText.Text);
@@ -107,7 +110,8 @@ public partial class MainPage : ContentPage
 
             this.CurrentCalculation.Text = this.displayText;
 
-            
+            await database.SaveItemAsync(this.displayText+ " = " + this.resultText.Text);
+
             firstNumber = result;
 
             secondNumber = 0;
