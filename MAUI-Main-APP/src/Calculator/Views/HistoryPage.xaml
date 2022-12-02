@@ -7,12 +7,12 @@
         <CollectionView EmptyView="No items to display">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Label Text="" />
+                    <Label Text="{Binding Expression}" />
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Button Text="Clear History" FontSize="Body" CornerRadius="10" 
                AbsoluteLayout.LayoutBounds="0.89,0.89,100,25" AbsoluteLayout.LayoutFlags="PositionProportional"/>
-
+        
     </AbsoluteLayout>
 </ContentPage>
